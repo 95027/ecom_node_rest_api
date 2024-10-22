@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const routes = require('./src/routes');
 const { sequelize } = require("./src/models");
 const errorHandler  = require("./src/middlewares/errorMiddleware");
@@ -12,6 +13,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
+app.use(cookieParser());
 app.use(express.json());
 app.use('/v1', routes);
 
