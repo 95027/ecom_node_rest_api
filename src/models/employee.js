@@ -9,6 +9,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      
+
+      this.belongsToMany(models.Role, {
+        through: "ModelHasRole",
+        foreignKey: "modelId",
+      });
+
+      this.belongsToMany(models.Permission, {
+        through: "ModelHasPermission",
+        foreignKey: "modelId",
+      });
+
     }
   }
   Employee.init(
